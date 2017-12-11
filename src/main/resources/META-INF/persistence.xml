@@ -5,12 +5,21 @@ version="1.0"  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
 	<persistence-unit name="banque" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>model.Adresse</class>
+		<class>model.Banque</class>
+		<class>model.Client</class>
+		<class>model.Compte</class>
+		<class>model.Operation</class>
+		<class>model.Virement</class>
+		<class>model.LivretA</class>
+		<class>model.AssuranceVie</class>
+		
 		<properties>
 			<!-- Désactiver l'autodétection des classe de type @Entity -->
 			<property name="hibernate.archive.autodetection" value=""/>
 			
 			<!-- Activation de la génération des tables manquantes uniquement -->
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="update"/> -->
 			
 			<!-- Recréer les tables à chaque fois -->
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

@@ -2,6 +2,7 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,11 +24,14 @@ public class Compte {
 	private int numero;
 	@Column(name="solde", nullable=false, precision=2)
 	private double solde;
-	@ManyToMany(mappedBy="comptes")
+	@ManyToMany(mappedBy="comptes", cascade=CascadeType.ALL )
 	private Set<Client> titulaires;
-	@OneToMany(mappedBy="compte")
+	@OneToMany(mappedBy="compte", cascade=CascadeType.ALL )
 	private Set<Operation> operations;
 	
+	public Compte() {
+		
+	}
 	
 	public Compte(double solde) {
 		this.solde = solde;

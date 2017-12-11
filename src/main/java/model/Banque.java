@@ -22,6 +22,10 @@ public class Banque {
 	@OneToMany(mappedBy="banque")
 	private Set<Client> clients;
 	
+	public Banque() {
+		
+	}
+	
 	public Banque(String name) {
 		this.name = name;
 		this.clients = new HashSet<Client>();

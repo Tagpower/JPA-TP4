@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -32,13 +33,16 @@ public class Client {
 	@ManyToOne
 	@JoinColumn(name="id_banque")
 	private Banque banque;
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL )
 	@JoinTable(name="appartenance",
 		joinColumns = @JoinColumn(name="id_client", referencedColumnName="id"),
-		inverseJoinColumns = @JoinColumn(name="id_compte", referencedColumnName="id")		
+		inverseJoinColumns = @JoinColumn(name="id_compte", referencedColumnName="numero")		
 	)
 	private Set<Compte> comptes;
 	
+	public Client() {
+		
+	}
 	
 	
 	public Client(String nom, String prenom, LocalDate date_n, Adresse adresse, Banque banque) {
